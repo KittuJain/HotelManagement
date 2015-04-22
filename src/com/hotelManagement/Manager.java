@@ -10,20 +10,16 @@ public class Manager {
     }
 
     public Hotel getCheapestHotel(CustomerCategory category, Sequence days) {
+        Integer currentPrice;
+        Integer cheapestPrice;
         Hotel cheapestHotel = null;
         Map<Hotel, Integer> costsOfHotels = getCostsOfAllHotels(category, days);
         for (Hotel hotel : costsOfHotels.keySet()) {
             if(cheapestHotel == null) cheapestHotel = hotel;
-            Integer currentPrice = costsOfHotels.get(hotel);
-            Integer cheapestPrice = costsOfHotels.get(cheapestHotel);
-            if(currentPrice < cheapestPrice)
+            currentPrice = costsOfHotels.get(hotel);
+            cheapestPrice = costsOfHotels.get(cheapestHotel);
+            if(currentPrice < cheapestPrice || currentPrice.equals(cheapestPrice) && hotel.isRatingHigherThan(cheapestHotel))
                 cheapestHotel = hotel;
-            if(currentPrice == cheapestPrice){
-                boolean flag = hotel.isRatingHigherThan(cheapestHotel);
-                if(flag){
-                    cheapestHotel = hotel;
-                }
-            }
         }
         return cheapestHotel;
     }

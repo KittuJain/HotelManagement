@@ -25,11 +25,7 @@ public class Hotel {
 
     @Override
     public String toString() {
-        return "Hotel{" +
-                "name='" + name + '\'' +
-                ", rating=" + rating +
-                ", rateCard=" + rateCard +
-                '}';
+        return name;
     }
 
     public boolean isRatingHigherThan(Hotel hotel) {
