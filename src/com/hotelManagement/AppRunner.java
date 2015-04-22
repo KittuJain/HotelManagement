@@ -3,9 +3,9 @@ package com.hotelManagement;
 public class AppRunner {
     //setup start
     private final Manager manager = new Manager();
-    private Hotel lakeWood;
-    private Hotel ridgeWood;
-    private Hotel bridgeWood;
+    private Hotel lakewood;
+    private Hotel ridgewood;
+    private Hotel bridgewood;
 
     private Rate wdRegularRateLakewood;
     private Rate weRegularRateLakewood;
@@ -23,20 +23,20 @@ public class AppRunner {
     private Rate wdRewardRateRidgewood;
 
     private void addRatesToHotels() {
-        lakeWood.addRate(wdRegularRateLakewood);
-        lakeWood.addRate(weRegularRateLakewood);
-        lakeWood.addRate(wdRewardRateLakewood);
-        lakeWood.addRate(weRewardRateLakewood);
+        lakewood.addRate(wdRegularRateLakewood);
+        lakewood.addRate(weRegularRateLakewood);
+        lakewood.addRate(wdRewardRateLakewood);
+        lakewood.addRate(weRewardRateLakewood);
 
-        bridgeWood.addRate(wdRegularRateBridgewood);
-        bridgeWood.addRate(weRegularRateBridgewood);
-        bridgeWood.addRate(wdRewardRateBridgewood);
-        bridgeWood.addRate(weRewardRateBridgewood);
+        bridgewood.addRate(wdRegularRateBridgewood);
+        bridgewood.addRate(weRegularRateBridgewood);
+        bridgewood.addRate(wdRewardRateBridgewood);
+        bridgewood.addRate(weRewardRateBridgewood);
 
-        ridgeWood.addRate(wdRegularRateRidgewood);
-        ridgeWood.addRate(weRegularRateRidgewood);
-        ridgeWood.addRate(wdRewardRateRidgewood);
-        ridgeWood.addRate(weRewardRateRidgewood);
+        ridgewood.addRate(wdRegularRateRidgewood);
+        ridgewood.addRate(weRegularRateRidgewood);
+        ridgewood.addRate(wdRewardRateRidgewood);
+        ridgewood.addRate(weRewardRateRidgewood);
     }
 
     private void setUpRates() {
@@ -57,19 +57,19 @@ public class AppRunner {
     }
 
     public void setUp() {
-        lakeWood = new Hotel("Lakewood", 3);
-        bridgeWood = new Hotel("Bridgewood", 4);
-        ridgeWood = new Hotel("Ridgewood", 5);
-        manager.manage(lakeWood);
-        manager.manage(bridgeWood);
-        manager.manage(ridgeWood);
+        lakewood = new Hotel("Lakewood", 3);
+        bridgewood = new Hotel("Bridgewood", 4);
+        ridgewood = new Hotel("Ridgewood", 5);
+        manager.manage(lakewood);
+        manager.manage(bridgewood);
+        manager.manage(ridgewood);
         setUpRates();
         addRatesToHotels();
     }
 
     //setup end
 
-    public String run(String inputCategory, String[] inputDays) {
+    public String getCheapestHotel(String inputCategory, String[] inputDays) {
         Sequence days = convertToSequence(inputDays);
         CustomerCategory category = getCategory(inputCategory);
         return "Cheapest Hotel: " + manager.getCheapestHotel(category,days);

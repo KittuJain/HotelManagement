@@ -6,9 +6,9 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class ManagerTest {
-    private Hotel lakeWood;
-    private Hotel ridgeWood;
-    private Hotel bridgeWood;
+    private Hotel lakewood;
+    private Hotel ridgewood;
+    private Hotel bridgewood;
     private Sequence days;
 
     private Rate wdRegularRateLakewood;
@@ -27,20 +27,20 @@ public class ManagerTest {
     private Rate wdRewardRateRidgewood;
 
     private void addRatesToHotels() {
-        lakeWood.addRate(wdRegularRateLakewood);
-        lakeWood.addRate(weRegularRateLakewood);
-        lakeWood.addRate(wdRewardRateLakewood);
-        lakeWood.addRate(weRewardRateLakewood);
+        lakewood.addRate(wdRegularRateLakewood);
+        lakewood.addRate(weRegularRateLakewood);
+        lakewood.addRate(wdRewardRateLakewood);
+        lakewood.addRate(weRewardRateLakewood);
 
-        bridgeWood.addRate(wdRegularRateBridgewood);
-        bridgeWood.addRate(weRegularRateBridgewood);
-        bridgeWood.addRate(wdRewardRateBridgewood);
-        bridgeWood.addRate(weRewardRateBridgewood);
+        bridgewood.addRate(wdRegularRateBridgewood);
+        bridgewood.addRate(weRegularRateBridgewood);
+        bridgewood.addRate(wdRewardRateBridgewood);
+        bridgewood.addRate(weRewardRateBridgewood);
 
-        ridgeWood.addRate(wdRegularRateRidgewood);
-        ridgeWood.addRate(weRegularRateRidgewood);
-        ridgeWood.addRate(wdRewardRateRidgewood);
-        ridgeWood.addRate(weRewardRateRidgewood);
+        ridgewood.addRate(wdRegularRateRidgewood);
+        ridgewood.addRate(weRegularRateRidgewood);
+        ridgewood.addRate(wdRewardRateRidgewood);
+        ridgewood.addRate(weRewardRateRidgewood);
     }
 
     private void setUpRates() {
@@ -62,9 +62,9 @@ public class ManagerTest {
 
     @Before
     public void setUp() {
-        lakeWood = new Hotel("Lakewood", 3);
-        bridgeWood = new Hotel("Bridgewood", 4);
-        ridgeWood = new Hotel("Ridgewood", 5);
+        lakewood = new Hotel("Lakewood", 3);
+        bridgewood = new Hotel("Bridgewood", 4);
+        ridgewood = new Hotel("Ridgewood", 5);
         setUpRates();
         addRatesToHotels();
         days = new Sequence();
@@ -73,52 +73,52 @@ public class ManagerTest {
     @Test
     public void testGetCheapestHotel_01() {
         Manager manager = new Manager();
-        manager.manage(lakeWood);
-        manager.manage(bridgeWood);
+        manager.manage(lakewood);
+        manager.manage(bridgewood);
         days.add(Day.WEEKDAY);
         days.add(Day.WEEKDAY);
         days.add(Day.WEEKEND);
         Hotel hotel = manager.getCheapestHotel(CustomerCategory.REGULAR, days);
-        assertEquals(lakeWood, hotel);
+        assertEquals(lakewood, hotel);
     }
 
     @Test
     public void testGetCheapestHotel_02() {
         Manager manager = new Manager();
-        manager.manage(lakeWood);
-        manager.manage(bridgeWood);
+        manager.manage(lakewood);
+        manager.manage(bridgewood);
         days.add(Day.WEEKDAY);
         days.add(Day.WEEKEND);
         days.add(Day.WEEKEND);
         Hotel hotel = manager.getCheapestHotel(CustomerCategory.REGULAR, days);
-        assertEquals(bridgeWood, hotel);
+        assertEquals(bridgewood, hotel);
     }
 
     @Test
     public void testGetCheapestHotel_03() {
         Manager manager = new Manager();
-        manager.manage(lakeWood);
-        manager.manage(bridgeWood);
-        manager.manage(ridgeWood);
+        manager.manage(lakewood);
+        manager.manage(bridgewood);
+        manager.manage(ridgewood);
 
         days.add(Day.WEEKDAY);
         days.add(Day.WEEKDAY);
         days.add(Day.WEEKDAY);
         Hotel hotel = manager.getCheapestHotel(CustomerCategory.REGULAR, days);
-        assertEquals(lakeWood, hotel);
+        assertEquals(lakewood, hotel);
     }
 
     @Test
     public void testGetCheapestHotel_04() {
         Manager manager = new Manager();
-        manager.manage(lakeWood);
-        manager.manage(bridgeWood);
-        manager.manage(ridgeWood);
+        manager.manage(lakewood);
+        manager.manage(bridgewood);
+        manager.manage(ridgewood);
 
         days.add(Day.WEEKDAY);
         days.add(Day.WEEKDAY);
         days.add(Day.WEEKEND);
         Hotel hotel = manager.getCheapestHotel(CustomerCategory.REWARDS, days);
-        assertEquals(ridgeWood, hotel);
+        assertEquals(ridgewood, hotel);
     }
 }

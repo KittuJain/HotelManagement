@@ -9,7 +9,7 @@ public class HotelManagement {
         String[] inputDays = Arrays.copyOfRange(args, 1, args.length);
         AppRunner appRunner = new AppRunner();
         appRunner.setUp();
-        String output = appRunner.run(inputCategory, inputDays);
+        String output = appRunner.getCheapestHotel(inputCategory, inputDays);
         System.out.println(output);
     }
 }
