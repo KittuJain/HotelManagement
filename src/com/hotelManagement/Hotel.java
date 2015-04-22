@@ -22,4 +22,5 @@ public class Hotel {
         }
         return cost;
     }
+
 }

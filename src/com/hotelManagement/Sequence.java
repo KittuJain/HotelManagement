@@ -5,14 +5,21 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Sequence implements Iterable<Day> {
-    List<Day> items = new ArrayList<Day>();
+    List<Day> days = new ArrayList<>();
 
     public void add(Day item) {
-        items.add(item);
+        days.add(item);
+    }
+
+    @Override
+    public String toString() {
+        return "Sequence{" +
+                "days=" + days +
+                '}';
     }
 
     @Override
     public Iterator<Day> iterator() {
-        return items.iterator();
+        return days.iterator();
     }
 }
