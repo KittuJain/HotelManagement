@@ -23,4 +23,16 @@ public class Hotel {
         return cost;
     }
 
+    @Override
+    public String toString() {
+        return "Hotel{" +
+                "name='" + name + '\'' +
+                ", rating=" + rating +
+                ", rateCard=" + rateCard +
+                '}';
+    }
+
+    public boolean isRatingHigherThan(Hotel hotel) {
+        return this.rating > hotel.rating;
+    }
 }
