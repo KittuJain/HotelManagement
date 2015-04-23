@@ -12,13 +12,6 @@ public class Sequence implements Iterable<Day> {
     }
 
     @Override
-    public String toString() {
-        return "Sequence{" +
-                "days=" + days +
-                '}';
-    }
-
-    @Override
     public Iterator<Day> iterator() {
         return days.iterator();
     }
